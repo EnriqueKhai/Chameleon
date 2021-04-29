@@ -36,12 +36,12 @@ if mode == 1
     png_filename = "";
     bin_filename = "";
     
-    % Prompt user for PNG file.
+    % Prompt user for PNG filename.
     while ~isfile(png_filename)
         png_filename = input("PNG file: ", "s");
     end
     
-    % Prompt user for binary file.
+    % Prompt user for binary filename.
     while ~isfile(bin_filename)
         bin_filename = input("bin file: ", "s");
     end
@@ -53,6 +53,8 @@ if mode == 1
     bin_fd = fopen(bin_filename, "r");
     
     bin_data = fread(bin_fd);
+    fclose(bin_fd);
+    
     bin_data = bin_data.';
     
     % Construct payload.
@@ -82,6 +84,43 @@ end
 if mode == 2
     fprintf("Mode 2: LSB Decode\n");
     fprintf("------------------\n");
+    
+    png_filename = "";
+    out_filename = "";
+    
+    % Prompt user for PNG filename.
+    while ~isfile(png_filename)
+        png_filename = input("PNG file: ", "s");
+    end
+    
+    % Prompt user for output filename.
+    out_filename = input("out file: ", "s");
+    
+    fprintf("\n");
+    
+    % Load files onto stack.
+    IMG = imread(png_filename);
+    bin_fd = fopen(out_filename, "w");
+    
+    % Extract payload from PNG image.
+    fprintf("Extracting the binary file from the PNG image...");
+    
+    head = extract(IMG, 1, 64);
+    num_bytes = deserialize(head, 64);
+    
+    body = extract(IMG, 65, 65 + num_bytes * 8 - 1);
+    bin_data = deserialize(body, 8);
+    
+    fprintf(" done!\n");
+    
+    % Recover original binary file.
+    fprintf("Writing the binary file to %s...", out_filename);
+    
+    fwrite(bin_fd, bin_data);
+    
+    fclose(bin_fd);
+    
+    fprintf(" done!\n\n");
 end
 
 
