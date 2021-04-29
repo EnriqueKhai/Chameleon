@@ -1,12 +1,18 @@
-function bit_array = serialize( byte_array , word_len )
+function bit_array = serialize( word_array , word_len )
 %{
-SERIALIZE takes in an array of bytes (possibly of
-    size 1) and returns an array of bits.
+SERIALIZE takes in an array of words (possibly of
+    size 1), each of length WORD_LEN bits, and
+    returns an array of bits.
 
-    Each byte in BYTE_ARRAY is converted into a
+    Here, a "word" refers to an integer of
+    WORD_LEN bits. To serialize an array of bytes,
+    call serialize() with WORD_LEN = 8 as a byte
+    can be represented as an 8-bit integer.
+
+    Each word in WORD_ARRAY is converted into a
     subarray of WORD_LEN bits. Specifically , the
-    subarray corresponding to each byte is the re-
-    verse of said byte's binary representation.
+    subarray corresponding to each word is the re-
+    verse of said word's binary representation.
 
     Consider the decimal number 11 = (1011)b. To
     convert it into a subarray of 8 bits, we first
@@ -19,6 +25,8 @@ SERIALIZE takes in an array of bytes (possibly of
 
 
 EXAMPLE:
+
+    Assume we are trying to serialize 5-bit words.
 
     Calling serialize([2, 5], 5) returns the array
     [0 1 0 0 0 1 0 1 0 0].
@@ -35,19 +43,19 @@ EXAMPLE:
     get the return value [0 1 0 0 0 1 0 1 0 0].
 
 %}
-    num_bytes = size(byte_array, 2);
-    bit_array = zeros(1, num_bytes * word_len);
+    num_words = size(word_array, 2);
+    bit_array = zeros(1, num_words * word_len);
     
-    for i = 1 : num_bytes
+    for i = 1 : num_words
         offset = word_len * (i - 1);
-        curr_byte = byte_array(i);
+        curr_word = word_array(i);
         
         for j = 1 : word_len
-            lsb = bitand(curr_byte, 1);
+            lsb = bitand(curr_word, 1);
 
             bit_array(j + offset) = lsb;
 
-            curr_byte = bitshift(curr_byte, -1);
+            curr_word = bitshift(curr_word, -1);
         end
     end
 end
