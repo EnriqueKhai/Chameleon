@@ -23,4 +23,4 @@ One reasonable motivation is being able to feel like a hacker. Hide you PDF repo
 word documents or text files containing secret keys inside an image of a cute puppy
 and send it to your friends! Have them clone this git repository and - *viola!* - you
 have your own secret communication channel! Also, you can hide all sorts of stuff from
-the FBI, though if you ever find yourself in such a position, please do not contact me.
+the FBI, though if you ever find yourself in such a position please do not contact me.
