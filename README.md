@@ -19,10 +19,11 @@ and from photographic images. For a video demo, click here.
 
 ### The following binary files can be embedded using Chameleon:
 
-1. Word documents, excel files and PDF reports.
-2. C-executables and small programs.
-3. Another image!
-4. *Any* byte-representable computer file.
+1. Document files (Word, Excel, PDF, etc...).
+2. Media files (JPG, MP3, MP4, etc...).
+3. Source codes (C, Python, Rust, etc...).
+4. Small programs or executables.
+5. *Any* byte-representable computer file.
 
 
 Why would anyone need something like that? Glad you asked!
