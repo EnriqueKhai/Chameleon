@@ -14,14 +14,14 @@ For more information on steganography, watch [this](https://youtu.be/TWEXCYQKyDc
 # Overview
 
 Chameleon is a collection of MATLAB scripts and functions that perform steganographic
-operations. These tools allow users to hide and recover all kinds of binary files in
-and from photo images. For a video demo, click here.
+operations. These tools allow users to embed and recover all kinds of binary files in
+and from photographic images. For a video demo, click here.
 
-The following binaries can be embedded using Chameleon:
+## The following binary files can be embedded using Chameleon:
 
 1. Word documents, excel files and PDF reports.
 2. C-executables and small programs.
-3. *Another* image!
+3. Another image!
 4. *Any* byte-representable computer file.
 
 
