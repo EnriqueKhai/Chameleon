@@ -21,8 +21,8 @@ These embeddable binaries include (but are not limited to):
 
 1. Word documents, excel files and PDF reports.
 2. C-executables and small programs.
-3. *Another image!*
-4. Any byte-representable computer file.
+3. *Another* image!
+4. *Any* byte-representable computer file.
 
 
 Why would anyone need something like that? Glad you asked!
