@@ -6,7 +6,11 @@ modes = [
     "2) LSB decode"
 ];
 
-num_modes = size(modes, 1);
+num_modes = max(size(modes));
+
+% Constants.
+HEAD_LEN = 64;
+BYTE_LEN = 8;
 
 %% Prompt user for mode of operation.
 
@@ -38,7 +42,7 @@ if mode == 1
     
     % Prompt user for PNG filename.
     while ~isfile(png_filename)
-        png_filename = input("PNG file: ", "s");
+        png_filename = input("img file: ", "s");
     end
     
     % Prompt user for binary filename.
@@ -55,27 +59,25 @@ if mode == 1
     bin_data = fread(bin_fd);
     fclose(bin_fd);
     
-    bin_data = bin_data.';
-    
     % Construct payload.
-    num_bytes = size(bin_data, 2);
+    num_bytes = max(size(bin_data));
     
-    head = serialize(num_bytes, 64);
-    body = serialize(bin_data , 8);
+    head = serialize(num_bytes, HEAD_LEN);
+    body = serialize(bin_data , BYTE_LEN);
     
     payload = [head, body];
     
     % Encode binary file in PNG image.
-    fprintf("Encoding the binary file in the PNG image...");
+    fprintf("Encoding binary file within image...");
     
     MOD_IMG = lsb_encode(IMG, payload);
     
     fprintf(" done!\n");
     
     % Save modified image.
-    fprintf("Saving the modified image as modified.png...");
+    fprintf("Saving modified image as steg.png...");
     
-    imwrite(MOD_IMG, "modified.png");
+    imwrite(MOD_IMG, "steg.png", "Compression", "none");
     
     fprintf(" done!\n\n");
 end
@@ -90,7 +92,7 @@ if mode == 2
     
     % Prompt user for PNG filename.
     while ~isfile(png_filename)
-        png_filename = input("PNG file: ", "s");
+        png_filename = input("img file: ", "s");
     end
     
     % Prompt user for output filename.
@@ -103,18 +105,21 @@ if mode == 2
     bin_fd = fopen(out_filename, "w");
     
     % Extract payload from PNG image.
-    fprintf("Extracting the binary file from the PNG image...");
+    fprintf("Extracting binary file within image...");
     
-    head = extract(IMG, 1, 64);
-    num_bytes = deserialize(head, 64);
+    head = extract(IMG, 1, HEAD_LEN);
+    num_bytes = deserialize(head, HEAD_LEN);
     
-    body = extract(IMG, 65, 65 + num_bytes * 8 - 1);
-    bin_data = deserialize(body, 8);
+    from = HEAD_LEN + 1;
+    to   = from + (num_bytes * 8 - 1);
+    
+    body = extract(IMG, from, to);
+    bin_data = deserialize(body, BYTE_LEN);
     
     fprintf(" done!\n");
     
     % Recover original binary file.
-    fprintf("Writing the binary file to %s...", out_filename);
+    fprintf("Writing binary file to %s...", out_filename);
     
     fwrite(bin_fd, bin_data);
     

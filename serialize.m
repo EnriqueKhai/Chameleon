@@ -1,4 +1,4 @@
-function bit_array = serialize( word_array , word_len )
+function bit_array = serialize(word_array, word_len)
 %
 % SERIALIZE takes in an array of words (possibly of
 %     size 1), each of length WORD_LEN bits, and
@@ -30,6 +30,8 @@ function bit_array = serialize( word_array , word_len )
 % 
 %     Calling serialize([2, 5], 5) returns the array
 %     [0 1 0 0 0 1 0 1 0 0].
+%
+%     First, we pad both 2 and 5 to a length of 5.
 % 
 %     2 = ( 10)b = (00010)b.
 %     5 = (101)b = (00101)b.
@@ -45,7 +47,7 @@ function bit_array = serialize( word_array , word_len )
 %
 % SEE ALSO: DESERIALIZE.
 
-    num_words = size(word_array, 2);
+    num_words = max(size(word_array));
     bit_array = zeros(1, num_words * word_len);
     
     for i = 1 : num_words
