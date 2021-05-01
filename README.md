@@ -9,7 +9,7 @@ tries to hide the fact that a message was sent at all.
 
 Imagine intercepting a letter with one line, "uryyb jbeyq". One would be astute to
 suspect that some form of encryption was involved. Indeed, "uryyb jbeyq" is an
-encryption of "hello world" under ROT13.
+encryption of "hello world" under [ROT13](https://en.wikipedia.org/wiki/ROT13).
 
 Imagine now, intercepting another letter with one line, "hello world". Perfectly
 literate content, albeit somewhat nonsensical. Even the most suspecting observer
