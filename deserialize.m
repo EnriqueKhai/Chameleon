@@ -15,7 +15,7 @@ function word_array = deserialize(bit_array, word_len)
 %     integer described by the corresponding WORD_LEN
 %     bits.
 % 
-%     Assume WORD_LEN = 5. If the first 5 bits in
+%     Assume WORD_LEN = 5. If then first 5 bits in
 %     BIT_ARRAY are [1 1 1 0 0], the the first word
 %     is rev(11100)b = (00111)b = 7.
 % 

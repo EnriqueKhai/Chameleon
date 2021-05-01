@@ -4,10 +4,31 @@ function bit_array = extract(IMG, from, to)
 %     of the pixels in IMG, starting at pixel FROM
 %     and ending at pixel TO.
 %
-%     These LSBs are returned as an array of bits,
+%     These LSBs are returned as an array of bits
 %     in BIT_ARRAY.
 %
-% SEE ALSO: EXTRACT
+%
+% EXAMPLE:
+%
+%     Let IMG = [
+%         (11110010)b, (10000011)b, (00000001)b, ...
+%     ].
+%
+%     Calling EXTRACT(IMG, 1, 3) will return an
+%     array of 3 bits, specifically the LSBs of
+%     the first, second and third pixel in IMG.
+%
+%     Recall IMG = [
+%         (11110010)b, (10000011)b, (00000001)b, ...
+%                 _            _            _
+%     ].
+%
+%     Then, the return value is
+%
+%     BIT_ARRAY = [0 1 1].
+%
+%
+% SEE ALSO: EMBED
 
     [height, width, depth] = size(IMG);
     

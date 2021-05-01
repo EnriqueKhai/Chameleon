@@ -8,7 +8,8 @@ function MOD_IMG = embed( IMG , payload )
 %     the n-th pixel in IMG to the same value
 %     and stores the result as the n-th pixel
 %     of MOD_IMG.
-% 
+%
+%
 % EXAMPLE:
 % 
 %     Let PAYLOAD = [1 0 0 ... ].
@@ -27,9 +28,9 @@ function MOD_IMG = embed( IMG , payload )
 %                 -            -            -
 %     ].
 %
+%
 % SEE ALSO: EXTRACT
 
-    %% Encode payload in the PNG image.
     N = size(payload, 2);
     
     MOD_IMG = IMG;
