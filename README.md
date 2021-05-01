@@ -69,7 +69,7 @@ done it (very unlikely).
 
 Chameleon embeds binaries in a lightweight way. The first 64 bits are
 reserved for header information - a 64-bit integer **N** denotes the size
-of the original binary embedded. The next **N** bits are form the
+of the original binary embedded. The next **N** bits form the
 serialized binary exactly.
 
 ### Image size.
