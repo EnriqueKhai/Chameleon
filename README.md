@@ -33,5 +33,4 @@ grandfather's address or text files containing secret keys inside an image of a 
 and send it to your friends! Have them clone this git repository and - *viola!* - you
 have your own secret communication channel!
 
-Also, you can hide all sorts of stuff from the FBI! Why you would do that is beyond me,
-though if by happenstance you ever find such a need please do not contact me...
+Also, you could hide all sorts of stuff from the FBI!
