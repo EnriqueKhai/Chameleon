@@ -5,9 +5,10 @@
 > image, or video is concealed within another file, message, image, or video.
 
 Where cryptography is the art of concealing messages from prying eyes, steganography
-tries to hide the fact that a message was sent at all. Applications of steganography
-range from [digital watermarking](https://en.wikipedia.org/wiki/Digital_watermarking)
-to securing communication channels.
+tries to hide the fact that a message was sent at all. Imaging write a letter to your
+friend, and between the lines you write another message in invisible ink. From the
+outside looking in, no one would ever guess that something was going on under the
+hood! That is the power of steganography in a nutshell.
 
 For more information on steganography, watch [this](https://youtu.be/TWEXCYQKyDc).
 
