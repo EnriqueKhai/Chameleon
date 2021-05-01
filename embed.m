@@ -1,34 +1,34 @@
-function MOD_IMG = lsb_encode( IMG , payload )
-%{
-LSB_ENCODE embeds the serialized payload in the
-    target image.
+function MOD_IMG = embed( IMG , payload )
+%
+% EMBED embeds the serialized PAYLOAD in IMG,
+%     returning the modified image as MOD_IMG.
+% 
+%     For each of the n bits in PAYLOAD, EMBED
+%     sets the least-significant bit (LSB) of
+%     the n-th pixel in IMG to the same value
+%     and stores the result as the n-th pixel
+%     of MOD_IMG.
+% 
+% EXAMPLE:
+% 
+%     Let PAYLOAD = [1 0 0 ... ].
+% 
+%     Let IMG = [
+%         (10000000)b, (00001111)b, (11001110)b, ...
+%     ].
+% 
+%     Then, EMBED sets the LSB of the first,
+%     second and third pixel in IMG to 1, 0,
+%     and 0 respectively, storing these new
+%     pixels in MOD_IMG.
+% 
+%     Then, MOD_IMG = [
+%         (10000001)b, (00001110)b, (11001110)b, ...
+%                 -            -            -
+%     ].
+%
+% SEE ALSO: EXTRACT
 
-    For each of the n-th bit in PAYLOAD, LSB_E
-    -NCODE sets the least-significant bit (LSB)
-    of the n-th pixel in IMG to the same value.
-
-EXAMPLE:
-
-    Let PAYLOAD = [1 0 0].
-
-    Let IMG(1 : 3) = [
-        (10000000)b, (00001111)b, (11001110)b
-    ].
-
-    Then, LSB_ENCODE sets the LSB of the first,
-    second and third pixel in IMG to 1, 0, and
-    0 respectively.
-
-    Then, MOD_IMG(1 : 3) = [
-        (10000001)b, (00001110)b, (11001110)b
-                -            -            -
-    ].
-
-    LSB(IMG(1)) changed from 0 to 1.
-    LSB(IMG(2)) changed from 1 to 0.
-    LSB(IMG(3)) remains unchanged at 0.
-
-%}
     %% Encode payload in the PNG image.
     N = size(payload, 2);
     

@@ -2,8 +2,8 @@
 clc, clear;
 
 modes = [
-    "1) LSB encode"
-    "2) LSB decode"
+    "LSB encode"
+    "LSB decode"
 ];
 
 num_modes = max(size(modes));
@@ -12,13 +12,15 @@ num_modes = max(size(modes));
 HEAD_LEN = 64;
 BYTE_LEN = 8;
 
+STEG_IMG = "steg.png";
+
 %% Prompt user for mode of operation.
 
 fprintf("Modes available:\n");
 
 % Print available modes.
 for i = 1 : num_modes
-    fprintf("%s\n", modes(i));
+    fprintf("%d) %s\n", i, modes(i));
 end
 
 fprintf("\n");
@@ -32,17 +34,17 @@ end
 
 fprintf("\n\n");
 
-%% Mode 1: LSB encode.
+%% Operation: encode.
 if mode == 1
-    fprintf("Mode 1: LSB Encode\n");
+    fprintf("Mode %d: %s\n", mode, modes(mode));
     fprintf("------------------\n");
     
-    png_filename = "";
+    img_filename = "";
     bin_filename = "";
     
-    % Prompt user for PNG filename.
-    while ~isfile(png_filename)
-        png_filename = input("img file: ", "s");
+    % Prompt user for image filename.
+    while ~isfile(img_filename)
+        img_filename = input("img file: ", "s");
     end
     
     % Prompt user for binary filename.
@@ -53,7 +55,7 @@ if mode == 1
     fprintf("\n");
     
     % Load files onto stack.
-    IMG = imread(png_filename);
+    img = imread(img_filename);
     bin_fd = fopen(bin_filename, "r");
     
     bin_data = fread(bin_fd);
@@ -67,32 +69,32 @@ if mode == 1
     
     payload = [head, body];
     
-    % Encode binary file in PNG image.
-    fprintf("Encoding binary file within image...");
+    % Embed binary file in image.
+    fprintf("Embedding binary file in image...");
     
-    MOD_IMG = lsb_encode(IMG, payload);
+    mod_img = embed(img, payload);
     
     fprintf(" done!\n");
     
     % Save modified image.
-    fprintf("Saving modified image as steg.png...");
+    fprintf("Saving modified image as %s...", STEG_IMG);
     
-    imwrite(MOD_IMG, "steg.png", "Compression", "none");
+    imwrite(mod_img, STEG_IMG);
     
     fprintf(" done!\n\n");
 end
 
-%% Mode 2: LSB decode.
+%% Operation: decode.
 if mode == 2
-    fprintf("Mode 2: LSB Decode\n");
+    fprintf("Mode %d: %s\n", mode, modes(mode));
     fprintf("------------------\n");
     
-    png_filename = "";
+    img_filename = "";
     out_filename = "";
     
-    % Prompt user for PNG filename.
-    while ~isfile(png_filename)
-        png_filename = input("img file: ", "s");
+    % Prompt user for image filename.
+    while ~isfile(img_filename)
+        img_filename = input("img file: ", "s");
     end
     
     % Prompt user for output filename.
@@ -101,25 +103,26 @@ if mode == 2
     fprintf("\n");
     
     % Load files onto stack.
-    IMG = imread(png_filename);
-    bin_fd = fopen(out_filename, "w");
+    img = imread(img_filename);
     
-    % Extract payload from PNG image.
-    fprintf("Extracting binary file within image...");
+    % Extract payload from image.
+    fprintf("Extracting binary file from image...");
     
-    head = extract(IMG, 1, HEAD_LEN);
+    head = extract(img, 1, HEAD_LEN);
     num_bytes = deserialize(head, HEAD_LEN);
     
     from = HEAD_LEN + 1;
     to   = from + (num_bytes * 8 - 1);
     
-    body = extract(IMG, from, to);
+    body = extract(img, from, to);
     bin_data = deserialize(body, BYTE_LEN);
     
     fprintf(" done!\n");
     
     % Recover original binary file.
     fprintf("Writing binary file to %s...", out_filename);
+    
+    bin_fd = fopen(out_filename, "w");
     
     fwrite(bin_fd, bin_data);
     

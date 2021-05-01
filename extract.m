@@ -6,6 +6,8 @@ function bit_array = extract(IMG, from, to)
 %
 %     These LSBs are returned as an array of bits,
 %     in BIT_ARRAY.
+%
+% SEE ALSO: EXTRACT
 
     [height, width, depth] = size(IMG);
     
