@@ -66,8 +66,8 @@ first place. That varies from implementation to implementation.
 
 This necessarily implies that Chameleon can only extract binaries from
 images that (i) contain binaries embedded by Chameleon itself **or**; (ii)
-had binaries embedded in **exactly** the same way as Chameleon would have
-done it (very unlikely).
+contain binaries that were embedded in **exactly** the same way as
+Chameleon would have embedded it (very unlikely).
 
 Chameleon embeds binaries in a lightweight way. The first 64 bits are
 reserved for header information - a 64-bit integer **N** denotes the size
