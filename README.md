@@ -63,7 +63,7 @@ modified, one needs to know *how* the binary file was embedded in the
 first place. That varies from implementation to implementation.
 
 This necessarily implies that Chameleon can only extract binaries from
-images that (1) have binaries embedded by Chameleon itself **or**; (ii)
+images that (i) contain binaries embedded by Chameleon itself **or**; (ii)
 had binaries embedded in **exactly** the same way as Chameleon would have
 done it (very unlikely).
 
