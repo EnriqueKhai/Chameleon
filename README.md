@@ -29,9 +29,9 @@ and from photographic images. For a video demo, click here.
 Why would anyone need something like that? Glad you asked!
 
 One reasonable motivation is being able to feel like a [hacker](https://github.com/EnriqueKhai).
-Hide you school homework, grandfather's address or text files containing secret keys inside an
-image of a cute puppy and send it to your friends! Have them clone this git repository and
-- *viola!* - you have your own secret communication channel!
+Hide you school homework, grandfather's address or text files containing secret keys
+inside an image of a cute puppy and send it to your friends! Have them clone this git
+repository and - *viola!* - you have your own secret communication channel!
 
 Also, you could hide all sorts of stuff from the FBI! Why you would need to do that is beyond
 me, but it is what it it.
