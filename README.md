@@ -51,8 +51,8 @@ Currently these modes of operations have been implemented/ are planned:
 
 1. LSB Encode
 2. LSB Decode
-3. DCT Encode (dev...)
-4. DCT Decode (dev...)
+3. DCT Encode (pending...)
+4. DCT Decode (pending...)
 
 # Technical Notes
 
