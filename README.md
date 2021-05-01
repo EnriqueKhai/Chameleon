@@ -56,7 +56,7 @@ Currently these modes of operations have been implemented/ are planned:
 
 # Technical Notes
 
-#### Chameleon - Decode
+### Chameleon - Decode
 
 To retrieve a piece of binary from an image that was steganographically
 modified, one needs to know *how* the binary file was embedded in the
@@ -72,13 +72,13 @@ reserved for header information - a 64-bit integer **N** denotes the size
 of the original binary embedded. The next **N** bits are form the
 serialized binary exactly.
 
-#### Image size.
+### Image size.
 
 In Chameleon's implementation, binary files can only be embedded in images
 that are **at least** 8x larger. To be safe, ensure that images are at least
 10x larger.
 
-#### Support for Python3.
+### Support for Python3.
 
 I have no intention of re-developing Chameleon in another (more popular)
 programming language. Unfortunately, I am a student and have no time to
