@@ -47,6 +47,8 @@ repository and - *viola!* - you have your own secret communication channel!
 
 # Steganography
 
+For a video demo on how to use Chameleon, click here.
+
 Currently these modes of operations have been implemented/ are planned:
 
 1. LSB Encode
