@@ -60,6 +60,16 @@ Currently these modes of operations have been implemented/ are planned:
 
 # Technical Notes
 
+### Chameleon - Encode
+
+Chameleon embeds binaries in a lightweight manner. A 64-bit integer
+`num_bytes` denotes the size of the original binary embedded. Within the
+modified image, the LSBs of the first 64 pixels form the
+[serialized](https://github.com/EnriqueKhai/Chameleon/blob/main/serialize.m)
+`num_bytes` exactly. The LSBs of the next `num_bytes` * 8 pixels form the
+[serialized](https://github.com/EnriqueKhai/Chameleon/blob/main/serialize.m)
+binary exactly.
+
 ### Chameleon - Decode
 
 To retrieve a piece of binary from an image that was steganographically
@@ -70,13 +80,6 @@ This necessarily implies that Chameleon can only extract binaries from
 images that (i) contain binaries embedded by Chameleon itself **or**; (ii)
 contain binaries that were embedded in **exactly** the same way as
 Chameleon would have embedded it (very unlikely).
-
-Chameleon embeds binaries in a lightweight manner. A 64-bit integer
-`num_bytes` denotes the size of the original binary embedded. Within the
-modified image, the LSBs of the first 64 pixels form the [serialized](https://github.com/EnriqueKhai/Chameleon/blob/main/serialize.m)
-`num_bytes` exactly. The LSBs of the next `num_bytes` * 8 pixels form the
-[serialized](https://github.com/EnriqueKhai/Chameleon/blob/main/serialize.m)
-binary exactly.
 
 ### Image size.
 
