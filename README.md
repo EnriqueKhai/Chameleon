@@ -71,16 +71,21 @@ images that (i) contain binaries embedded by Chameleon itself **or**; (ii)
 contain binaries that were embedded in **exactly** the same way as
 Chameleon would have embedded it (very unlikely).
 
-Chameleon embeds binaries in a lightweight way. The first 64 bits are
-reserved for header information - a 64-bit integer **N** denotes the size
-of the original binary embedded. The next **N** bits form the
-serialized binary exactly.
+Chameleon embeds binaries in a lightweight manner. A 64-bit integer
+`num_bytes` denotes the size of the original binary embedded. Within the
+modified image, the LSBs of the first 64 pixels form the [serialized](https://github.com/EnriqueKhai/Chameleon/blob/main/serialize.m)
+`num_bytes` exactly. The LSBs of the next `num_bytes` * 8 pixels form the
+[serialized](https://github.com/EnriqueKhai/Chameleon/blob/main/serialize.m)
+binary exactly.
 
 ### Image size.
 
-In Chameleon's implementation, binary files can only be embedded in images
-that are **at least** 8x larger. To be safe, ensure that images are at least
-10x larger.
+Currently, binary files can only be embedded in images that are **at least**
+8x larger. To be safe, ensure that images are at least 10x larger.
+
+Here, the *size* of an image refers to the product of its dimensions in pixels
+multiplied by the number of color channels available. An RGB image (so 3 channels)
+with dimensions 100px by 200px will have a size of 100 * 200 * 3 = 60,000 bytes.
 
 ### Support for Python3.
 
