@@ -45,6 +45,8 @@ Hide you school homework, grandfather's address or text files containing secret 
 inside an image of a cute puppy and send it to your friends! Have them clone this git
 repository and - *viola!* - you have your own secret communication channel!
 
+Need to hide a secret? Well, you can!
+
 # Steganography
 
 For a video demo on how to use Chameleon, click [here](https://www.loom.com/share/7897c8f1db04414599a7aa56204ede5a).
