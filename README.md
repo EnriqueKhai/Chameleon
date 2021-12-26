@@ -1,4 +1,4 @@
-# Steganography
+# MATLAB Steganography Tool
 
 ![image](https://user-images.githubusercontent.com/42400406/126765638-442ecb72-0af7-40cc-ad98-ab8c6448ed44.png)
 
