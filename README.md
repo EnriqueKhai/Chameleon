@@ -1,4 +1,4 @@
-# Introduction
+# Steganography
 
 ![image](https://user-images.githubusercontent.com/42400406/126765638-442ecb72-0af7-40cc-ad98-ab8c6448ed44.png)
 
@@ -51,7 +51,7 @@ repository and - *viola!* - you have your own secret communication channel!
 
 Need to hide a secret? Well, you can!
 
-# Steganography
+# Usage
 
 For a video demo on how to use Chameleon, click [here](https://www.loom.com/share/7897c8f1db04414599a7aa56204ede5a).
 
