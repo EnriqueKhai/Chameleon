@@ -29,7 +29,7 @@ For more information on steganography, watch [this](https://youtu.be/TWEXCYQKyDc
 
 # Overview
 
-Chameleon is a collection of MATLAB scripts and functions that perform steganographic
+[hameleon](https://github.com/EnriqueKhai/Chameleon) is a collection of MATLAB scripts and functions that perform steganographic
 operations. These tools allow users to embed and recover all kinds of binary files in
 and from photographic images. For a video demo, click [here](https://www.loom.com/share/7897c8f1db04414599a7aa56204ede5a).
 
